@@ -1,0 +1,235 @@
+body {
+    background: #0DE5C6;
+    margin: 0;
+    font-size: 25 px;
+    text-align: center;
+    height: 100%;
+
+    display: grid;
+    grid-gap: 10px;
+    
+    grid-template-areas:
+        "header"
+        "hero"
+        "body"
+        "footer"
+}
+
+/* --> Header sadaļa */
+header {
+    background: #880505;
+    padding: 10px;
+    grid-area: header;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    grid-template-areas:
+        "brand brand"
+        "nav tools";
+}
+
+header .brand {
+    background: #FF8700;
+    grid-area: brand;
+}
+
+header nav {
+    background: #FF8700;
+    grid-area: nav;
+}
+
+header .tools {
+    background: #FF8700;
+    grid-area: tools;
+}
+
+/* --> Hero sadaļa <-- */
+.hero {
+    background: #006BFF;
+    padding: 15px;
+    grid-area: hero;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+    grid-template-areas:
+        "action";
+}
+
+.hero .action {
+    background: #FFDC00;
+    grid-area: action;
+}
+
+.hero .feature {
+    background: #FFDC00;
+    grid-area: feature;
+}
+
+/* --> Body sadaļa */
+main {
+    background: #00FF44;
+    padding: 15px;
+    grid-area: body;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+    grid-template-areas: 
+        "feature"
+        "ad"
+        "listing";
+}
+
+main .feature {
+    background: #00FFCF;
+    grid-area: feature;
+}
+
+main .mobile-ad {
+    grid-area: ad;
+}
+
+main .listing {
+    background: #00FFCF;
+    grid-area: listing;
+}
+
+/* Kājene */
+footer {
+    background: #4E00FF;
+    padding: 15px;
+    grid-area: footer;
+	color: white;
+	text-align: right;
+}
+
+
+/* Noņem sadaļas kuras nedrīkst būt mobile versijā*/
+.desktop-ad {
+    grid-area: ad;
+    display: none;
+}
+
+.hero .feature {
+    display: none;
+}
+
+/* Sidebar sadaļā */
+.sidebar {
+    background: #492102;
+    padding: 15px;
+    grid-area: sidebar;
+
+    display: none;
+}
+
+.sidebar .feature {
+    background: #FF00D8;
+    height: 100%;
+}
+
+.mobile-ad img {
+    vertical-align: top;
+    width: 100%;
+}
+
+.desktop-ad img {
+    vertical-align: top;
+    width: 350px;
+}
+
+.mobile-ad:hover {
+    opacity: 0.5;
+}
+
+.desktop-ad:hover {
+    opacity: 0.5;
+}
+
+/* Planšetes izmeri */
+@media (min-width: 576px) {
+    body {
+        grid-template-rows: auto auto 1fr auto auto;
+        grid-template-areas:
+            "header"
+            "hero"
+            "body"
+            "sidebar"
+            "footer";
+    }
+
+    /* Maina izkartojumu */
+    header {
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas:
+            "brand nav tools";
+    }
+
+    /* Maina Hero izkartojumu */
+    .hero {
+        grid-template-areas:
+            "feature"
+            "action";
+    }
+
+    .hero .feature {
+        display: block;
+    }
+
+    /* Maina Body izkartojumu */
+    main {
+        grid-template-columns: 1fr 200px;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "feature ad"
+            "listing listing";
+    }
+
+    /* Maina sidebar izkartojumu*/
+    .sidebar {
+        display: grid;
+    }
+
+    .mobile-ad img {
+        width: 200px;
+    }
+}
+
+/* Desktop izkartojums */
+@media (min-width: 992px) {
+    body {
+        grid-template-columns: 1fr 350px;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "header header"
+            "hero ad"
+            "body sidebar"
+            "footer footer"
+    }
+
+    /* Maina Hero izkartojumu */
+    .hero {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "feature action"
+    }
+
+    /* Maina Body izkartojumu */
+    main {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "feature listing"
+    }
+
+    .mobile-ad {
+        display: none;
+		
+    }
+
+    .desktop-ad {
+        display: block;
+    }
+}
